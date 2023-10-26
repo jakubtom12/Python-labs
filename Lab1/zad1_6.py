@@ -1,19 +1,42 @@
-from random import randint
+import random
 
-numbers = []
-numbers_length = 50
-for i in range(numbers_length):
-    numbers.append(randint(0,100))
+randomlist = []
+for i in range(0,10):
+    n = random.randint(1,100)
+    randomlist.append(n)
 
-def main(list):
-    for j in range(len(list)-1):
-        for i in range(len(list)-1):
-            if (list[i]<list[i+1]):
-                list[i],list[i+1]= list[i+1], list[i]
-    return list
+print("Not sorted:", randomlist)
 
+#bubble sort
+randomlist1 = randomlist.copy()
+counter = 0
+old_counter = 0
 
-print(numbers)
-if __name__ == '__main__':
-    main(numbers)
-    print(numbers)
+while True:
+    for i in range(len(randomlist1)-1):
+        if randomlist1[i] > randomlist1[i+1]:
+            randomlist1[i], randomlist1[i+1] = randomlist1[i+1], randomlist1[i]
+            counter+=1
+    if counter == old_counter:
+        break
+    else:
+        old_counter = counter
+
+print("Sorted using bubble sort:", randomlist1)
+
+#insertion sort
+randomlist2 = randomlist.copy()
+
+for j in range(1, len(randomlist2)):
+    key = randomlist2[j]
+    x = j - 1
+    while x >= 0 and key < randomlist2[x]:
+        randomlist2[x+1] = randomlist2[x]
+        x -= 1
+    randomlist2[x+1] = key
+
+print("Sorted using insertion sort:", randomlist2)
+
+#python method to check
+randomlist.sort()
+print("Sorted using Python:", randomlist)
