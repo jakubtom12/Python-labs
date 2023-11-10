@@ -6,8 +6,8 @@ from zad2_2 import parallel_sort
 def generate_random_data(length): #funkcja do tworzenia danych losowych
     return [random.randint(0, 10**6) for _ in range(length)]
 
-data_sizes = [10**5, 10**6, 2*10**6] #Test funkcji
-process_counts = [1, 2, 3]
+data_sizes = [10**2, 10**3, 10**4, 10**5] #Test funkcji
+process_counts = [1, 2, 3, 4]
 
 results = {}
 
