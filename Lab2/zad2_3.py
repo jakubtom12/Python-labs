@@ -1,14 +1,12 @@
 import random
 import time
 import matplotlib.pyplot as plt
-import multiprocessing
 from zad2_2 import parallel_sort
 
 def generate_random_data(length): #funkcja do tworzenia danych losowych
     return [random.randint(0, 10**6) for _ in range(length)]
 
-#Test funkcji 
-data_sizes = [10**5, 10**6, 2*10**6]
+data_sizes = [10**5, 10**6, 2*10**6] #Test funkcji
 process_counts = [1, 2, 3]
 
 results = {}
@@ -34,9 +32,5 @@ if __name__ == '__main__':
     ax.set_ylabel('Time (seconds)')
     ax.legend()
     ax.grid(True)
-
-    #Wnioski z wykresu
-    #Czas sortowania rosnie ze wzrostem rozmiaru danych
-    #Wiecej procesow przyspiesza sortowanie dla wiekszej ilosci danych
 
     plt.show()
