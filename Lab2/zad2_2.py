@@ -29,17 +29,14 @@ def parallel_sort(data, processes):
  
     chunk_size = len(data) // processes #calculate chunk of data which should be sorted by this process
     chunks = [data[i:i + chunk_size] for i in range(0, len(data), chunk_size)] #split data to chunks
-    
-    # Create a pool of worker processes
-    pool = multiprocessing.Pool(processes=processes)
+
+    pool = multiprocessing.Pool(processes=processes) #stworzenie procesu
     sorted_chunks = pool.map(sorted, chunks)
 
-    # Close the pool and wait for the workers to finish
     pool.close() #konczenie pracy multiProcesow
-    pool.join()#
+    pool.join()
 
-    # Merge the sorted chunks
-    while len(sorted_chunks) > 1:
+    while len(sorted_chunks) > 1: #Merge sorted chunks
         merged_chunks = []
         for i in range(0, len(sorted_chunks), 2):
             if i + 1 < len(sorted_chunks):
