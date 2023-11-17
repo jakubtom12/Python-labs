@@ -19,9 +19,14 @@ class Tree:
             ret += child.__str__(level + 1)
         return ret
 
+    @property
+    def min_value(self):
+        values = self.traverse()
+        return min(values, key=lambda x: int(x))
+    
 # Przykład użycia
 if __name__ == "__main__":
-    my_tree = Tree("1")
+    my_tree = Tree("7")
     my_tree.add_child("2")
     my_tree.add_child("3")
     my_tree.children[0].add_child("4")
@@ -29,3 +34,4 @@ if __name__ == "__main__":
     my_tree.children[1].add_child("6")
 
     print(my_tree)
+    print(f"Najmniejsza wartość w drzewie: {my_tree.min_value}")

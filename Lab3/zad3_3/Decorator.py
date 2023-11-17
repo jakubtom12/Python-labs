@@ -2,24 +2,22 @@ import os
 import pickle
 import timeit
 
-def decorator(function):
-    
+def decorator(function):  
     def wrapper(n):
-        fibonacci_file = f'fibonacci_{n}.pkl'
+        myfile = 'result.pkl'
 
-        if os.path.exists(fibonacci_file):
-            with open(fibonacci_file, 'rb') as file:
+        if os.path.exists(myfile):
+            with open(myfile, 'rb') as file:
                 result = pickle.load(file)
-            print("existing")
+                print("File exists. Reading result:")
         
         else:
             result = function(n)
-            with open(fibonacci_file, 'wb') as file:
+            with open(myfile, 'wb') as file:
                 pickle.dump(result, file)
-            print("new")
+            print("Result calculated and saved to new file:")
 
         return result
-
     return wrapper
 
 @decorator
